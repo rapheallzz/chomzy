@@ -337,8 +337,7 @@
         <i class="fas fa-music" style="color: var(--deep-red);"></i>
     </div>
     <audio id="bgMusic" loop>
-        <!-- Placeholder for romantic background music -->
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        <source src="media/Herizen_Guardiola_-_Be_That_As_It_May_(mp3.pm).mp3" type="audio/mpeg">
     </audio>
 
     <!-- Stage 1: The Meeting -->
@@ -368,6 +367,10 @@
                 Meeting you at your workplace in Ibadan was like the sun coming out after a long winter.
                 My heart finally felt at home again.
             </p>
+            <div class="workplace-images" style="display: flex; gap: 20px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap;">
+                <img src="media/workplace.jpeg" alt="Workplace Meeting 1" style="width: 250px; height: 350px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.15); border: 5px solid white;">
+                <img src="media/workplace (2).jpeg" alt="Workplace Meeting 2" style="width: 250px; height: 350px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.15); border: 5px solid white;">
+            </div>
             <button class="unlock-btn" onclick="nextStage()">
                 <i class="fas fa-heart"></i>
                 <span class="unlock-label">Step closer to me</span>
@@ -486,6 +489,10 @@
         // Initialize Animations
         AOS.init({ duration: 1000, once: true });
 
+        const music = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        let isPlaying = false;
+
         let currentStage = 1;
         const totalStages = 6;
 
@@ -504,6 +511,14 @@
 
         // Stage Navigation
         function nextStage() {
+            // Attempt to play music on first interaction
+            if (!isPlaying) {
+                music.play().then(() => {
+                    isPlaying = true;
+                    musicToggle.innerHTML = '<i class="fas fa-pause" style="color: var(--deep-red);"></i>';
+                }).catch(e => console.log("Autoplay blocked or already playing"));
+            }
+
             if (currentStage < totalStages) {
                 document.querySelector(`.stage[data-stage="${currentStage}"]`).classList.remove('active');
                 currentStage++;
@@ -562,10 +577,6 @@
         }
 
         // Music Control
-        const music = document.getElementById('bgMusic');
-        const musicToggle = document.getElementById('musicToggle');
-        let isPlaying = false;
-
         musicToggle.onclick = () => {
             if (isPlaying) {
                 music.pause();
@@ -578,15 +589,19 @@
         };
 
         // Media items for slideshow
-        // CUSTOMIZATION: Add your photo (type: 'image') or video (type: 'video') URLs here.
         const mediaItems = [
-            { type: 'image', url: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=800', caption: 'Our First Meeting' },
-            { type: 'image', url: 'https://images.unsplash.com/photo-1522673607200-1648832cee98?auto=format&fit=crop&q=80&w=800', caption: 'Your beautiful smile' },
-            { type: 'video', url: 'https://www.w3schools.com/html/mov_bbb.mp4', caption: 'That funny moment' },
-            { type: 'image', url: 'https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&q=80&w=800', caption: 'Walking hand in hand' },
-            { type: 'video', url: 'https://www.w3schools.com/html/movie.mp4', caption: 'Our favorite clip' },
-            { type: 'image', url: 'https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&fit=crop&q=80&w=800', caption: 'A magical night' },
-            { type: 'image', url: 'https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&q=80&w=800', caption: 'Our forever promise' }
+            { type: 'image', url: 'media/workplace.jpeg', caption: 'Your beautiful smile at work' },
+            { type: 'image', url: 'media/workplace (2).jpeg', caption: 'The moment I found you again' },
+            { type: 'image', url: 'media/WhatsApp Image 2026-02-13 at 8.33.20 PM (1).jpeg', caption: 'A picture-perfect memory' },
+            { type: 'image', url: 'media/WhatsApp Image 2026-02-13 at 8.33.21 PM.jpeg', caption: 'Chasing sunsets with you' },
+            { type: 'image', url: 'media/WhatsApp Image 2026-02-13 at 8.33.22 PM.jpeg', caption: 'Every moment is a treasure' },
+            { type: 'video', url: 'media/WhatsApp Video 2026-02-13 at 8.33.39 PM.mp4', caption: 'Pure joy in motion' },
+            { type: 'video', url: 'media/WhatsApp Video 2026-02-13 at 8.33.39 PM (1).mp4', caption: 'Our laughter echoes forever' },
+            { type: 'video', url: 'media/WhatsApp Video 2026-02-13 at 8.33.39 PM (2).mp4', caption: 'Just us, being us' },
+            { type: 'video', url: 'media/WhatsApp Video 2026-02-13 at 8.33.39 PM (3).mp4', caption: 'A glimpse of our happiness' },
+            { type: 'video', url: 'media/WhatsApp Video 2026-02-13 at 8.33.39 PM (4).mp4', caption: 'Dancing through life together' },
+            { type: 'video', url: 'media/WhatsApp Video 2026-02-13 at 8.33.40 PM.mp4', caption: 'Captured magic' },
+            { type: 'video', url: 'media/WhatsApp Video 2026-02-13 at 8.33.40 PM (1).mp4', caption: 'My favorite person, my favorite view' }
         ];
 
         const wrapper = document.getElementById('mediaWrapper');
