@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Eternal Love for Chomzy</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <!-- AOS Library for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Swiper.js for the slideshow -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+        :root {
+            --primary-pink: #ffafbd;
+            --deep-red: #ff3e6d;
+            --soft-white: #fff0f3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--soft-white) 100%);
+            color: #333;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Floating Hearts Background */
+        .heart-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            color: var(--deep-red);
+            opacity: 0.6;
+            animation: float 6s linear infinite;
+            font-size: 20px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Content Sections */
+        section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        /* Header */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            color: var(--deep-red);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            font-family: 'Parisienne', cursive;
+            font-size: 2.5rem;
+            color: #555;
+        }
+
+        /* Message Section */
+        .message-box {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+
+        .romantic-text {
+            font-family: 'Parisienne', cursive;
+            font-size: 2rem;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        /* Slideshow Section */
+        .slideshow-container {
+            width: 100%;
+            padding: 40px 0;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 500px;
+            border-radius: 20px;
+        }
+
+        .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+        }
+
+        .swiper-slide img, .swiper-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .slide-caption {
+            padding: 15px;
+            font-style: italic;
+            color: #666;
+            background: #fff;
+            width: 100%;
+            border-radius: 0 0 20px 20px;
+        }
+
+        /* Comment Section */
+        .comment-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 60px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 15px;
+            border: 2px solid var(--primary-pink);
+            border-radius: 10px;
+            font-family: inherit;
+            margin-bottom: 20px;
+            resize: none;
+        }
+
+        button {
+            background-color: var(--deep-red);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #e0355d;
+            transform: scale(1.05);
+        }
+
+        .messages-display {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .message-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--deep-red);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            padding: 40px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .subtitle { font-size: 1.8rem; }
+            .romantic-text { font-size: 1.5rem; }
+            .swiper { height: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="heart-container" id="heartContainer"></div>
+
+    <header>
+        <h1 data-aos="fade-down">My Eternal Love for Chomzy</h1>
+        <p class="subtitle" data-aos="fade-up" data-aos-delay="400">Happy Valentine's Day, My Love!</p>
+    </header>
+
+    <section id="message">
+        <div class="message-box" data-aos="zoom-in">
+            <p class="romantic-text">
+                From the moment I met you, my world has been brighter.
+                You are my everything, my heart, and my greatest adventure.
+                Every day with you feels like a beautiful dream come true,
+                and I can't wait to create a lifetime of more magical memories together.
+                I love you more than words can ever express. ❤️
+            </p>
+        </div>
+    </section>
+
+    <section id="memories">
+        <h2 style="font-family: 'Great Vibes', cursive; font-size: 3rem; margin-bottom: 30px;">Our Beautiful Memories</h2>
+        <div class="slideshow-container" data-aos="fade-up">
+            <!-- Swiper -->
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper" id="swiperWrapper">
+                    <!-- Slides will be injected here via JavaScript -->
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="comments">
+        <div class="comment-section" data-aos="fade-up">
+            <h3 style="font-family: 'Parisienne', cursive; font-size: 2.5rem; margin-bottom: 20px;">Leave a Message for Me ❤️</h3>
+            <form id="commentForm">
+                <textarea id="commentText" placeholder="Write something sweet..." required></textarea>
+                <button type="submit">Send with Love</button>
+            </form>
+            <div id="messagesDisplay" class="messages-display">
+                <!-- Messages will appear here -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Made with ❤️ for Chomzy</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // --- CUSTOMIZATION SECTION ---
+        // Add your images and videos here!
+        // For images: { type: 'image', url: '...', caption: '...' }
+        // For videos: { type: 'video', url: '...', caption: '...' }
+        const mediaItems = [
+            { type: 'image', url: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=1000', caption: 'Our first date' },
+            { type: 'image', url: 'https://images.unsplash.com/photo-1516589174184-c6858b1a274a?auto=format&fit=crop&q=80&w=1000', caption: 'That magical trip' },
+            { type: 'image', url: 'https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&q=80&w=1000', caption: 'Walking hand in hand' },
+            { type: 'video', url: 'https://www.w3schools.com/html/mov_bbb.mp4', caption: 'A silly moment together' }, // Example video placeholder
+            { type: 'image', url: 'https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&fit=crop&q=80&w=1000', caption: 'Sunsets with you' },
+            { type: 'image', url: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1000', caption: 'Coffee mornings' },
+            { type: 'image', url: 'https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&q=80&w=1000', caption: 'Pure happiness' },
+            { type: 'image', url: 'https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&q=80&w=1000', caption: 'Forever & Always' }
+        ];
+        // --- END CUSTOMIZATION SECTION ---
+
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Populate Swiper
+        const swiperWrapper = document.getElementById('swiperWrapper');
+        mediaItems.forEach(item => {
+            const slide = document.createElement('div');
+            slide.className = 'swiper-slide';
+
+            let mediaHtml = '';
+            if (item.type === 'video') {
+                mediaHtml = `<video controls muted loop><source src="${item.url}" type="video/mp4">Your browser does not support the video tag.</video>`;
+            } else {
+                mediaHtml = `<img src="${item.url}" alt="${item.caption}">`;
+            }
+
+            slide.innerHTML = `
+                ${mediaHtml}
+                <div class="slide-caption">${item.caption}</div>
+            `;
+            swiperWrapper.appendChild(slide);
+        });
+
+        // Initialize Swiper
+        const swiper = new Swiper(".mySwiper", {
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+
+        // Floating Hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            document.getElementById('heartContainer').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 300);
+
+        // Comment Form Logic
+        document.getElementById('commentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const text = document.getElementById('commentText').value;
+            if (text.trim()) {
+                const messagesDisplay = document.getElementById('messagesDisplay');
+                const commentItem = document.createElement('div');
+                commentItem.className = 'message-item';
+
+                // Securely add text to prevent XSS
+                const p = document.createElement('p');
+                p.textContent = text;
+
+                const small = document.createElement('small');
+                small.textContent = 'Just now';
+                small.style.color = '#999';
+
+                commentItem.appendChild(p);
+                commentItem.appendChild(small);
+
+                messagesDisplay.prepend(commentItem);
+
+                document.getElementById('commentText').value = '';
+                alert('Message sent with love! ❤️');
+            }
+        });
+    </script>
+</body>
+</html>
