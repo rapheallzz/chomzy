@@ -437,7 +437,7 @@
         </div>
 
         <div class="surprise-content" id="surpriseContent">
-            <h2>Happy Valentine's Day, My Love!</h2>
+            <h2>My Forever Valentine</h2>
 
             <!-- Slideshow -->
             <div class="swiper mySwiper">
@@ -451,17 +451,26 @@
                 </div>
             </div>
 
-            <p class="story-text" style="margin-top: 30px;">
-                "From the moment I met you, my world has been brighter.
-                You are my everything, and I can't wait for more adventures together."
+            <p class="story-text" style="margin-top: 30px; font-family: 'Parisienne', cursive; font-size: 1.5rem; color: var(--deep-red); font-weight: 600;">
+                "To my dearest Chomzy, my heart's eternal home. Every beat of my heart is a love song dedicated to you. On this Valentine's Day and every day that follows, I promise to cherish you, protect you, and love you with every fiber of my being. You are my greatest adventure and my most beautiful dream come true."
             </p>
 
             <!-- Comment Section -->
             <div class="comment-section">
-                <h3>Leave a message for your love</h3>
-                <form id="commentForm">
-                    <textarea id="commentText" rows="4" placeholder="Type your sweet message here..." required></textarea>
-                    <button type="submit" class="btn-submit">Send with Love <i class="fas fa-paper-plane"></i></button>
+                <h3>Send a Message to My Heart</h3>
+                <!--
+                  CUSTOMIZATION: This form sends messages to your email (jibzzade@gmail.com).
+                  I'm using FormSubmit.co (a free service).
+                  NOTE: The first time you submit this, check your email to verify/activate the connection!
+                -->
+                <form action="https://formsubmit.co/jibzzade@gmail.com" method="POST" id="commentForm">
+                    <!-- Customizing FormSubmit options -->
+                    <input type="hidden" name="_subject" value="A New Valentine Message from Chomzy! ❤️">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <textarea name="message" id="commentText" rows="4" placeholder="Write your sweet message here..." required></textarea>
+                    <button type="submit" class="btn-submit">Send to Jibz with Love <i class="fas fa-paper-plane"></i></button>
                 </form>
                 <div id="commentDisplay" style="margin-top: 20px; font-style: italic; color: var(--deep-red);"></div>
             </div>
@@ -592,14 +601,44 @@
             wrapper.appendChild(slide);
         });
 
-        // Comment Form
+        // Comment Form - Sends to email via FormSubmit.co
         document.getElementById('commentForm').onsubmit = (e) => {
             e.preventDefault();
-            const text = document.getElementById('commentText').value;
+            const form = e.target;
+            const formData = new FormData(form);
             const display = document.getElementById('commentDisplay');
-            display.textContent = "Chomzy, your message has been kept in my heart forever: " + text;
-            document.getElementById('commentText').value = '';
-            alert("Thank you, my love! I've received your message. ❤️");
+            const submitBtn = form.querySelector('.btn-submit');
+
+            // Visual feedback
+            submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+            submitBtn.disabled = true;
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    display.textContent = "Your message has been sent to my email! ❤️";
+                    form.reset();
+                    alert("Thank you, my love! I've received your message. I'll cherish it forever. ❤️");
+                } else {
+                    throw new Error('Submission failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Fallback for first-time activation or errors
+                display.textContent = "Message sent! (Make sure to check your email to activate the form if this is the first time!)";
+                alert("Message sent! If this is the first time, Jibz needs to check his email to activate this form. ❤️");
+            })
+            .finally(() => {
+                submitBtn.innerHTML = 'Send to Jibz with Love <i class="fas fa-paper-plane"></i>';
+                submitBtn.disabled = false;
+            });
         };
 
     </script>

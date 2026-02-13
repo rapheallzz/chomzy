@@ -8,15 +8,14 @@ A personalized, multi-stage interactive web page that tells the story of your lo
 - **Progress Heart:** A romantic progress bar at the top shows how far she is in the journey.
 - **Dramatic Surprise:** A final "Reveal" interaction that opens the memory slideshow and video.
 - **Romantic Atmosphere:** Background music, floating hearts, and elegant animations (AOS & Swiper.js).
-- **Secure Comment Section:** A place for her to leave a heartfelt response.
+- **Email Comment Section:** A place for her to leave a response that will be sent directly to your email (jibzzade@gmail.com).
 
 ## How to Customize
 1.  **Dates and Text:** Search for the `<section class="stage">` blocks in `index.html` to update the dates or story text.
 2.  **Photos and Videos:** Find the `mediaItems` array in the `<script>` section at the bottom of the file. Replace the placeholder URLs with links to your own photos and videos.
 3.  **Background Music:** Replace the `src` in the `<audio>` tag with a link to your favorite romantic song.
 4.  **Names:** If you wish to change the name "Chomzy", search and replace it throughout the file.
-
-## How to Host
+5.  **Email Setup:** The first time a message is sent via the form, check your email for a confirmation from **FormSubmit.co** to activate the form.
 ### Option 1: GitHub Pages (Recommended)
 1.  Create a new repository on GitHub.
 2.  Upload `index.html` to the repository.
