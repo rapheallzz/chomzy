@@ -3,14 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Eternal Love for Chomzy</title>
-    <!-- Romantic Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- AOS for scroll/reveal animations -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Swiper.js for the slideshow -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <!-- Font Awesome for icons -->
+    <title>Valentine's for My Rare Gem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -30,632 +24,137 @@
             font-family: 'Montserrat', sans-serif;
             background: linear-gradient(135deg, var(--primary-pink) 0%, var(--soft-white) 100%);
             color: #333;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow-x: hidden;
-            min-height: 100vh;
+            padding: 20px;
         }
 
-        /* Floating Hearts Background */
-        .heart {
-            position: fixed;
-            color: rgba(255, 56, 92, 0.4);
-            font-size: 20px;
-            pointer-events: none;
-            z-index: 0;
-            animation: floatHeart linear forwards;
-        }
-
-        @keyframes floatHeart {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
-
-        /* Progress Bar */
-        .progress-container {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 600px;
             width: 100%;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(5px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .progress-bar-bg {
-            flex-grow: 1;
-            height: 8px;
-            background: #e0e0e0;
-            border-radius: 4px;
-            margin: 0 15px;
-            position: relative;
-        }
-
-        .progress-fill {
-            height: 100%;
-            width: 0%;
-            background: var(--deep-red);
-            border-radius: 4px;
-            transition: width 0.8s ease;
-        }
-
-        .progress-heart {
-            position: absolute;
-            top: 50%;
-            left: 0%;
-            transform: translate(-50%, -50%);
-            color: var(--deep-red);
-            font-size: 24px;
-            transition: left 0.8s ease;
-            text-shadow: 0 0 5px rgba(0,0,0,0.2);
-        }
-
-        /* Music Toggle */
-        .music-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: white;
-            padding: 10px;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            cursor: pointer;
-            z-index: 1000;
-            transition: transform 0.3s;
-        }
-
-        .music-control:hover {
-            transform: scale(1.1);
-        }
-
-        /* Stage Containers */
-        .stage {
-            display: none;
-            min-height: 100vh;
-            padding: 80px 20px 100px;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             text-align: center;
             position: relative;
             z-index: 1;
+            border: 2px solid white;
         }
 
-        .stage.active {
-            display: flex;
-            animation: fadeIn 1.5s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h1, h2 {
-            font-family: 'Great Vibes', cursive;
-            color: var(--deep-red);
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        h1 { font-size: 3.5rem; }
-        h2 { font-size: 2.8rem; }
-
-        .date-badge {
-            font-family: 'Parisienne', cursive;
-            font-size: 1.8rem;
-            color: #555;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .story-text {
-            font-size: 1.2rem;
-            max-width: 600px;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            color: #444;
-        }
-
-        /* Heart Unlock Button */
-        .unlock-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            transition: transform 0.3s;
-        }
-
-        .unlock-btn i {
-            font-size: 4rem;
-            color: var(--deep-red);
-            filter: drop-shadow(0 0 10px rgba(255, 56, 92, 0.3));
-        }
-
-        .unlock-btn:hover {
-            transform: scale(1.2);
-        }
-
-        .unlock-label {
-            display: block;
-            margin-top: 10px;
-            font-weight: 600;
-            color: var(--deep-red);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.8rem;
-        }
-
-        /* Surprise Finale Styling */
-        .surprise-box {
-            width: 150px;
-            height: 150px;
-            background: var(--deep-red);
-            border-radius: 10px;
-            position: relative;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: all 0.5s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-
-        .surprise-box:hover {
-            transform: rotate(5deg) scale(1.1);
-        }
-
-        .surprise-content {
-            display: none;
-            width: 100%;
-            max-width: 1000px;
-        }
-
-        .surprise-content.reveal {
-            display: block;
-            animation: heartBurst 1s ease-out;
-        }
-
-        @keyframes heartBurst {
-            0% { transform: scale(0.5); opacity: 0; }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        /* Slideshow */
-        .swiper {
-            width: 100%;
-            padding-top: 50px;
-            padding-bottom: 50px;
-        }
-
-        .swiper-slide {
-            background-position: center;
-            background-size: cover;
-            width: 300px;
-            height: 400px;
+        .image-container {
+            width: 250px;
+            height: 350px;
+            margin: 0 auto 30px;
             border-radius: 15px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
             overflow: hidden;
-            background: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border: 5px solid white;
         }
 
-        .swiper-slide img, .swiper-slide video {
+        .image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .slide-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0,0,0,0.6);
-            color: white;
-            padding: 10px;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-
-        /* Comment Section */
-        .comment-section {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin-top: 50px;
-            width: 100%;
-            max-width: 600px;
-        }
-
-        textarea {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid var(--primary-pink);
-            border-radius: 10px;
-            resize: none;
-            margin-bottom: 20px;
-            font-family: inherit;
-        }
-
-        .btn-submit {
-            background: var(--deep-red);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn-submit:hover {
-            background: #e63252;
-        }
-
-        .restart-btn {
-            margin-top: 40px;
+        h1 {
+            font-family: 'Great Vibes', cursive;
             color: var(--deep-red);
-            text-decoration: underline;
-            cursor: pointer;
-            font-weight: 600;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
         }
 
-        /* Responsive */
-        @media (max-width: 600px) {
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .heart-icon {
+            color: var(--deep-red);
+            font-size: 2rem;
+            margin: 20px 0;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Floating Hearts Background */
+        .floating-heart {
+            position: fixed;
+            color: rgba(255, 56, 92, 0.3);
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 0;
+            animation: float linear forwards;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        footer {
+            margin-top: 20px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: var(--deep-red);
+        }
+
+        @media (max-width: 500px) {
             h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
-            .swiper-slide { width: 250px; height: 350px; }
+            .container { padding: 25px; }
+            .image-container { width: 200px; height: 280px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Progress Bar -->
-    <div class="progress-container">
-        <span style="font-family: 'Parisienne', cursive; font-size: 1.2rem; min-width: 80px;">Our Story</span>
-        <div class="progress-bar-bg">
-            <div class="progress-fill" id="progressFill"></div>
-            <div class="progress-heart" id="progressHeart"><i class="fas fa-heart"></i></div>
+    <div class="container">
+        <div class="image-container">
+            <img src="media/rare_gem.jpeg" alt="My Rare Gem">
         </div>
-        <span id="stageLabel" style="font-weight: 600; font-size: 0.8rem; min-width: 60px;">1 / 6</span>
+
+        <h1>To My Rare Gem</h1>
+
+        <div class="heart-icon">
+            <i class="fas fa-heart"></i>
+        </div>
+
+        <p class="message">
+            "You are the most precious treasure in my life. Your smile brightens my darkest days,
+            and your love is the anchor that keeps me steady. Every moment with you is a gift I cherish deeply.
+            On this Valentine's Day, I want you to know that you are, and always will be, my everything."
+        </p>
+
+        <footer>
+            With all my love, forever yours.
+        </footer>
     </div>
 
-    <!-- Music Control -->
-    <div class="music-control" id="musicToggle">
-        <i class="fas fa-music" style="color: var(--deep-red);"></i>
-    </div>
-    <audio id="bgMusic" loop>
-        <source src="media/Herizen_Guardiola_-_Be_That_As_It_May_(mp3.pm).mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- Stage 1: The Meeting -->
-    <section class="stage active" data-stage="1">
-        <div data-aos="zoom-in">
-            <span class="date-badge">August 17th, 2023</span>
-            <h1>The Day My Life Changed</h1>
-            <p class="story-text">
-                At the NYSC camp, amidst the noise and the crowd, my eyes found yours.
-                I didn't know then that this was the start of my favorite story.
-                You were the most beautiful soul I had ever seen.
-            </p>
-            <button class="unlock-btn" onclick="nextStage()">
-                <i class="fas fa-heart"></i>
-                <span class="unlock-label">Unlock our next chapter</span>
-            </button>
-        </div>
-    </section>
-
-    <!-- Stage 2: The Reunion -->
-    <section class="stage" data-stage="2">
-        <div data-aos="fade-up">
-            <span class="date-badge">September 7th, 2025</span>
-            <h1>Finding You Again</h1>
-            <p class="story-text">
-                Since we left the NYSC camp, not a day went by that I didn't think of you.
-                Meeting you at your workplace in Ibadan was like the sun coming out after a long winter.
-                My heart finally felt at home again.
-            </p>
-            <div class="workplace-images" style="display: flex; gap: 20px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap;">
-                <img src="media/workplace.jpeg" alt="Workplace Meeting 1" style="width: 250px; height: 350px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.15); border: 5px solid white;">
-                <img src="media/workplace (2).jpeg" alt="Workplace Meeting 2" style="width: 250px; height: 350px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.15); border: 5px solid white;">
-            </div>
-            <button class="unlock-btn" onclick="nextStage()">
-                <i class="fas fa-heart"></i>
-                <span class="unlock-label">Step closer to me</span>
-            </button>
-        </div>
-    </section>
-
-    <!-- Stage 3: The Tour -->
-    <section class="stage" data-stage="3">
-        <div data-aos="fade-right">
-            <span class="date-badge">September 8th, 2025</span>
-            <h1>A Magical Journey</h1>
-            <p class="story-text">
-                Touring Ibadan with you was more than just a trip; it was a romantic adventure.
-                Every street we walked, every laugh we shared, made me realize that
-                wherever I am with you is exactly where I want to be.
-            </p>
-            <button class="unlock-btn" onclick="nextStage()">
-                <i class="fas fa-heart"></i>
-                <span class="unlock-label">Open the next gate</span>
-            </button>
-        </div>
-    </section>
-
-    <!-- Stage 4: The Proposal -->
-    <section class="stage" data-stage="4">
-        <div data-aos="flip-left">
-            <span class="date-badge">October 25th, 2025</span>
-            <h1>The Most Beautiful 'Yes'</h1>
-            <p class="story-text">
-                When you agreed to be my wife, you made me the happiest man in the world.
-                That moment is etched in my heart forever—a promise of a lifetime
-                of love, protection, and devotion to you.
-            </p>
-            <button class="unlock-btn" onclick="nextStage()">
-                <i class="fas fa-heart"></i>
-                <span class="unlock-label">Look into our future</span>
-            </button>
-        </div>
-    </section>
-
-    <!-- Stage 5: The Future -->
-    <section class="stage" data-stage="5">
-        <div data-aos="zoom-out-up">
-            <span class="date-badge">May 2026</span>
-            <h1>Our Forever Begins</h1>
-            <p class="story-text">
-                Our plan to be together finally becomes a reality.
-                I cannot wait for the day we walk down the aisle and start
-                every single morning by each other's side. My love for you only grows.
-            </p>
-            <button class="unlock-btn" onclick="nextStage()">
-                <i class="fas fa-gift"></i>
-                <span class="unlock-label">One final surprise...</span>
-            </button>
-        </div>
-    </section>
-
-    <!-- Stage 6: The Grand Surprise -->
-    <section class="stage" data-stage="6">
-        <div id="surpriseInit" data-aos="zoom-in">
-            <h1>For My Queen...</h1>
-            <p class="story-text">I have gathered our most precious moments. Click the box to reveal my heart.</p>
-            <div class="surprise-box" onclick="revealSurprise()">
-                <i class="fas fa-gift"></i>
-            </div>
-        </div>
-
-        <div class="surprise-content" id="surpriseContent">
-            <h2>My Forever Valentine</h2>
-
-            <!-- Slideshow -->
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper" id="mediaWrapper">
-                    <!-- Media items will be injected by JS -->
-                </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-navigation">
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-            </div>
-
-            <p class="story-text" style="margin-top: 30px; font-family: 'Parisienne', cursive; font-size: 1.5rem; color: var(--deep-red); font-weight: 600;">
-                "To my dearest Chomzy, my heart's eternal home. Every beat of my heart is a love song dedicated to you. On this Valentine's Day and every day that follows, I promise to cherish you, protect you, and love you with every fiber of my being. You are my greatest adventure and my most beautiful dream come true."
-            </p>
-
-            <!-- Comment Section -->
-            <div class="comment-section">
-                <h3>Send a Message to My Heart</h3>
-                <!--
-                  CUSTOMIZATION: This form sends messages to your email (jibzzade@gmail.com).
-                  I'm using FormSubmit.co (a free service).
-                  NOTE: The first time you submit this, check your email to verify/activate the connection!
-                -->
-                <form action="https://formsubmit.co/jibzzade@gmail.com" method="POST" id="commentForm">
-                    <!-- Customizing FormSubmit options -->
-                    <input type="hidden" name="_subject" value="A New Valentine Message from Chomzy! ❤️">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
-
-                    <textarea name="message" id="commentText" rows="4" placeholder="Write your sweet message here..." required></textarea>
-                    <button type="submit" class="btn-submit">Send to Jibz with Love <i class="fas fa-paper-plane"></i></button>
-                </form>
-                <div id="commentDisplay" style="margin-top: 20px; font-style: italic; color: var(--deep-red);"></div>
-            </div>
-
-            <div class="restart-btn" onclick="restartJourney()">Relive Our Story <i class="fas fa-redo"></i></div>
-        </div>
-    </section>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Initialize Animations
-        AOS.init({ duration: 1000, once: true });
-
-        const music = document.getElementById('bgMusic');
-        const musicToggle = document.getElementById('musicToggle');
-        let isPlaying = false;
-
-        let currentStage = 1;
-        const totalStages = 6;
-
-        // Floating Hearts logic
         function createHeart() {
             const heart = document.createElement('div');
-            heart.classList.add('heart');
+            heart.classList.add('floating-heart');
             heart.innerHTML = '<i class="fas fa-heart"></i>';
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+            heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+            heart.style.opacity = Math.random();
             document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 5000);
+            setTimeout(() => heart.remove(), 7000);
         }
-        setInterval(createHeart, 300);
-
-        // Stage Navigation
-        function nextStage() {
-            // Attempt to play music on first interaction
-            if (!isPlaying) {
-                music.play().then(() => {
-                    isPlaying = true;
-                    musicToggle.innerHTML = '<i class="fas fa-pause" style="color: var(--deep-red);"></i>';
-                }).catch(e => console.log("Autoplay blocked or already playing"));
-            }
-
-            if (currentStage < totalStages) {
-                document.querySelector(`.stage[data-stage="${currentStage}"]`).classList.remove('active');
-                currentStage++;
-                const nextSection = document.querySelector(`.stage[data-stage="${currentStage}"]`);
-                nextSection.classList.add('active');
-                updateProgress();
-
-                // Trigger AOS for the new stage
-                AOS.refresh();
-                window.scrollTo(0, 0);
-            }
-        }
-
-        function updateProgress() {
-            const progress = ((currentStage - 1) / (totalStages - 1)) * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
-            document.getElementById('progressHeart').style.left = progress + '%';
-            document.getElementById('stageLabel').textContent = `${currentStage} / ${totalStages}`;
-        }
-
-        function restartJourney() {
-            document.querySelectorAll('.stage').forEach(s => s.classList.remove('active'));
-            document.getElementById('surpriseContent').classList.remove('reveal');
-            document.getElementById('surpriseInit').style.display = 'block';
-            currentStage = 1;
-            document.querySelector('.stage[data-stage="1"]').classList.add('active');
-            updateProgress();
-            window.scrollTo(0, 0);
-        }
-
-        // Surprise Reveal
-        function revealSurprise() {
-            document.getElementById('surpriseInit').style.display = 'none';
-            document.getElementById('surpriseContent').classList.add('reveal');
-
-            // Initialize Swiper after reveal to ensure proper sizing
-            new Swiper(".mySwiper", {
-                effect: "coverflow",
-                grabCursor: true,
-                centeredSlides: true,
-                slidesPerView: "auto",
-                coverflowEffect: {
-                    rotate: 50,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 1,
-                    slideShadows: true,
-                },
-                pagination: { el: ".swiper-pagination" },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-                autoplay: { delay: 3000, disableOnInteraction: false },
-            });
-        }
-
-        // Music Control
-        musicToggle.onclick = () => {
-            if (isPlaying) {
-                music.pause();
-                musicToggle.innerHTML = '<i class="fas fa-play" style="color: var(--deep-red);"></i>';
-            } else {
-                music.play().catch(e => console.log("Music play blocked by browser"));
-                musicToggle.innerHTML = '<i class="fas fa-pause" style="color: var(--deep-red);"></i>';
-            }
-            isPlaying = !isPlaying;
-        };
-
-        // Media items for slideshow
-        const mediaItems = [
-            { type: 'image', url: 'media/workplace.jpeg', caption: 'Your beautiful smile at work' },
-            { type: 'image', url: 'media/workplace (2).jpeg', caption: 'The moment I found you again' },
-            { type: 'image', url: 'media/WhatsApp Image 2026-02-13 at 8.33.20 PM (1).jpeg', caption: 'A picture-perfect memory' },
-            { type: 'image', url: 'media/WhatsApp Image 2026-02-13 at 8.33.21 PM.jpeg', caption: 'Chasing sunsets with you' },
-            { type: 'image', url: 'media/WhatsApp Image 2026-02-13 at 8.33.22 PM.jpeg', caption: 'Every moment is a treasure' },
-            { type: 'video', url: 'media/WhatsApp Video 2026-02-13 at 8.33.39 PM.mp4', caption: 'Pure joy in motion' },
-            { type: 'video', url: 'media/WhatsApp Video 2026-02-13 at 8.33.39 PM (1).mp4', caption: 'Our laughter echoes forever' },
-            { type: 'video', url: 'media/WhatsApp Video 2026-02-13 at 8.33.39 PM (2).mp4', caption: 'Just us, being us' },
-            { type: 'video', url: 'media/WhatsApp Video 2026-02-13 at 8.33.39 PM (3).mp4', caption: 'A glimpse of our happiness' },
-            { type: 'video', url: 'media/WhatsApp Video 2026-02-13 at 8.33.39 PM (4).mp4', caption: 'Dancing through life together' },
-            { type: 'video', url: 'media/WhatsApp Video 2026-02-13 at 8.33.40 PM.mp4', caption: 'Captured magic' },
-            { type: 'video', url: 'media/WhatsApp Video 2026-02-13 at 8.33.40 PM (1).mp4', caption: 'My favorite person, my favorite view' }
-        ];
-
-        const wrapper = document.getElementById('mediaWrapper');
-        mediaItems.forEach(item => {
-            const slide = document.createElement('div');
-            slide.classList.add('swiper-slide');
-            if (item.type === 'image') {
-                slide.innerHTML = `<img src="${item.url}" alt="${item.caption}"><div class="slide-caption">${item.caption}</div>`;
-            } else {
-                slide.innerHTML = `<video src="${item.url}" muted loop autoplay></video><div class="slide-caption">${item.caption}</div>`;
-            }
-            wrapper.appendChild(slide);
-        });
-
-        // Comment Form - Sends to email via FormSubmit.co
-        document.getElementById('commentForm').onsubmit = (e) => {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
-            const display = document.getElementById('commentDisplay');
-            const submitBtn = form.querySelector('.btn-submit');
-
-            // Visual feedback
-            submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
-            submitBtn.disabled = true;
-
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    display.textContent = "Your message has been sent to my email! ❤️";
-                    form.reset();
-                    alert("Thank you, my love! I've received your message. I'll cherish it forever. ❤️");
-                } else {
-                    throw new Error('Submission failed');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Fallback for first-time activation or errors
-                display.textContent = "Message sent! (Make sure to check your email to activate the form if this is the first time!)";
-                alert("Message sent! If this is the first time, Jibz needs to check his email to activate this form. ❤️");
-            })
-            .finally(() => {
-                submitBtn.innerHTML = 'Send to Jibz with Love <i class="fas fa-paper-plane"></i>';
-                submitBtn.disabled = false;
-            });
-        };
-
+        setInterval(createHeart, 400);
     </script>
 </body>
 </html>
